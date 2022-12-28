@@ -16,7 +16,6 @@ import { useTranslation } from 'react-i18next';
 
 export const Home = () => {
   const { t, i18n } = useTranslation();
-
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [userParams, setUserParams] = useState(null);
   const { isChristmas } = useContext(ThemeContext);
@@ -53,8 +52,10 @@ export const Home = () => {
 
   return (
     <WrapperWtithFruits>
+        <p>{t("calculate")}</p>
+
       {Object.keys(lngs).map(lng => (
-        <div key={lng} onClick={() => i18n.changeLanguage()}>
+        <div key={lng} onClick={() => i18n.changeLanguage(lng)}>
           <Button
             type="submit"
             key={lng}
@@ -70,7 +71,6 @@ export const Home = () => {
         {isModalOpened && (
           <Modal onClose={onModalClose} userParams={userParams} />
         )}
-        <H2>{t("calculate")}</H2>
         <WeightForm
           openModal={setIsModalOpened}
           setUserParams={setUserParams}

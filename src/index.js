@@ -18,7 +18,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ThemeContextProvider>
         <PersistGate loading={null} persistor={persistor}>
           <BrowserRouter basename="/SlimMom">
-            <App />
+            <React.Suspense fallback="loading">
+              <App />
+            </React.Suspense>
           </BrowserRouter>
         </PersistGate>
       </ThemeContextProvider>
